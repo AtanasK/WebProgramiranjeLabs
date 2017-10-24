@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {StudentManagementService} from "./student-management.service";
+import {Student} from "./model/student";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public students: Student[] = [];
+  public currentStudent: Student;
+
+  constructor(private studentService: StudentManagementService) {
+
+  }
+
+  ngOnInit(): void {
+    this.students = this.studentService.students();
+  }
+
+  onSelect(student: Student) {
+    this.currentStudent = student;
+  }
 }
