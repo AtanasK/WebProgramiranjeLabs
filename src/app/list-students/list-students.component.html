@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Students</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <a *ngFor="let student of students" [routerLink]="['/details', student.id]"
+           class="list-group-item list-group-item-action">
+          {{student.name}} {{student.surname}}
+        </a>
+      </div>
+    </div>
+    <app-student-details *ngIf="currentStudent!==undefined"></app-student-details>
+  </div>
+</div>
